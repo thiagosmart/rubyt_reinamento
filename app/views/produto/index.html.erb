@@ -1,0 +1,59 @@
+
+<h3>Lista de Produtos</h3>
+<style type="text/css">
+	table{
+		border: 1px solid #ccc;
+	}
+
+
+	table tr th{
+		border: 1px solid #ccc;
+		font-weight: bold;
+	}
+
+
+	table tr td{
+		border: 1px solid #ccc;
+		font-weight: bold;
+	}
+</style>
+<fieldset>
+	<form action="/produto/incluir" method="Post">
+	<legend>Cadastro</legend>
+   <div>
+   	 <label  for="nome">Nome: </label>
+   	 <input type="text" name="nome" id="id">
+   </div>
+
+   <div>
+   	<label for="telefone"> Telefone :</label>
+      <input type="text" name="telefone" id="telefone">
+   </div>
+   <div>
+	  <input type="submit" value="Enviar">
+   </div>
+
+</form>
+
+
+</fieldset>
+
+
+
+<table>
+   <tr>
+	<th>Id</th>
+    <th>Nome</th>
+    <th>Telefone</th>
+</tr>
+<% @produtos.each do |produto|%>
+
+<tr>
+	
+    <td><%= produto.id %></td>
+    <td><%= produto.nome %></td>
+    <td><%= produto.telefone %></td>
+ </tr>
+ <% end %>
+</table>
+
