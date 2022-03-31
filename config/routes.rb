@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   root to: "home#index"
 
     get "/sobre", to:"sobre#index"
+
     get "/produto", to:"produto#index"
     post "/produto/incluir", to:"produto#incluir"
+    get  "/produto/:id/alterar", to:"produto#alterar"
+    
+    post "/produto/:id/salvar"  , to:"produto#salvar"
+
+    get "/produto/:id/excluir"  , to:"produto#excluir"
 end

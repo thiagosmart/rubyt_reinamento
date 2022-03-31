@@ -18,16 +18,33 @@
 	}
 </style>
 <fieldset>
-	<form action="/produto/incluir" method="Post">
-	<legend>Cadastro</legend>
+  	<legend>Cadastro</legend>
+
+  
+	<%
+    rota = "/produto/incluir"
+
+     nome = ""
+    telefone = ""
+
+    if @produto.present?
+       rota = "/produto/#{@produto.id}/salvar"
+       nome = @produto.nome
+       telefone = @produto.telefone    	
+    end
+
+   %>
+	<form action="<%= rota %>" method="Post">
+
+
    <div>
    	 <label  for="nome">Nome: </label>
-   	 <input type="text" name="nome" id="id">
+   	 <input type="text"  id="nome"  value="<%= nome %>" name="nome"  >
    </div>
 
    <div>
    	<label for="telefone"> Telefone :</label>
-      <input type="text" name="telefone" id="telefone">
+      <input type="text" id="telefone"value="<%= telefone %> " name="telefone">	
    </div>
    <div>
 	  <input type="submit" value="Enviar">
@@ -53,6 +70,8 @@
     <td><%= produto.id %></td>
     <td><%= produto.nome %></td>
     <td><%= produto.telefone %></td>
+      <td><a href="/produto/<%= produto.id %>/alterar">Alterar</a></td>
+      <td><a href="/produto/<%= produto.id %>/excluir">Excluir</a></td>
  </tr>
  <% end %>
 </table>
